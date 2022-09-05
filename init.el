@@ -131,6 +131,10 @@
   (emms-all)
   (emms-default-players))
 
+;; bongo to play audio
+(setup (:package bongo))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -141,7 +145,7 @@
  '(elfeed-feeds
    '("https://www.spreaker.com/show/4253631/episodes/feed" "https://www.spreaker.com/show/4244348/episodes/feed" "https://feeds.redcircle.com/c6d2e869-22ae-4e68-b88e-e1957d070d3a" "https://anchor.fm/s/62d12970/podcast/rss" "https://feeds.buzzsprout.com/1890340.rss"))
  '(package-selected-packages
-   '(magit emms elfeed slime setup paredit highlight-indent-guides nov\.el nov ef-themes devdocs-browser emacs-devdocs-browser dirvish q4 eglot lsp-ui dap-mode company-mode company lsp-pyright flycheck lsp-mode selectrum orderless consult marginalia which-key nix-mode use-package doom-themes))
+   '(bongo magit emms elfeed slime setup paredit highlight-indent-guides nov\.el nov ef-themes devdocs-browser emacs-devdocs-browser dirvish q4 eglot lsp-ui dap-mode company-mode company lsp-pyright flycheck lsp-mode selectrum orderless consult marginalia which-key nix-mode use-package doom-themes))
  '(warning-suppress-log-types '((lsp-mode) (lsp-mode) (comp)))
  '(warning-suppress-types '((lsp-mode) (comp))))
 (custom-set-faces
