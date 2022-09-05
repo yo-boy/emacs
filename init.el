@@ -125,15 +125,8 @@
 ;; elfeed rss tracker
 (setup (:package elfeed))
 
-;; emms audio play
-(setup (:package emms)
-  (require 'emms-setup)
-  (emms-all)
-  (emms-default-players))
-
 ;; bongo to play audio
 (setup (:package bongo))
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
