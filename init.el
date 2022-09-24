@@ -6,6 +6,9 @@
 (package-initialize)
 (require 'setup)
 
+;;make lines wrap on words
+(global-visual-line-mode 1)
+
 ;;remove the tool bar
 (tool-bar-mode -1)
 
@@ -62,17 +65,20 @@
             which-key-idle-delay 0.4))
 
 ;; ui stuff
-(setup (:package selectrum consult  marginalia  orderless)
+(setup (:package vertico consult  marginalia  orderless)
   ;; enable richer annotations using the Marginalia package
-  (:option selectrum-mode 1
+  (:option vertico-mode 1
 	   marginalia-mode 1
+	   savehist-mode 1
+	   enable-recursive-minibuffers t
 	   ;; orderless completion
 	   completion-styles '(orderless basic)
 	   completion-category-overrides '((file (styles basic partial-completion))))
   ;; consult
   (:global
    "C-x b" consult-buffer
-   "C-s" consult-line))
+   "C-s" consult-line)
+  (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
 (setup-define :lsp-langs
   (lambda (mode)
@@ -93,8 +99,31 @@
   (:option global-flycheck-mode 1))
 
 ;; company-mode
-(setup (:package  company)
-  (:option global-company-mode 1))
+;; (setup (:package  company)
+;;   (:option global-company-mode 1))
+
+(setup (:package corfu corfu-doc kind-icon)
+  (:option corfu-cycle t
+	   ;; corfu-auto t
+	   ;; corfu-auto-prefix 2
+	   ;; corfu-auto-delay 0.0
+	   ;; corfu-echo-documentation 0.25
+	   global-corfu-mode 1
+	   corfu-doc-mode 1
+	   kind-icon-default-face 'corfu-default)
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)
+  (:bind-into corfu-map
+    ;; "S-SPC" corfu-insert-separator
+    "SPC" corfu-insert-separator
+    "<M-up>" #'corfu-doc-scroll-down
+    "<M-down>" #'corfu-doc-scroll-up
+    "M-d" #'corfu-doc-toggle))
+
+(setup (:package pcmpl-args))
+;; (add-hook 'eshell-mode-hook
+;;           (lambda ()
+;;             (setq-local corfu-auto nil)
+;;             (corfu-mode)))
 
 (setup (:package  devdocs-browser))
 
@@ -138,7 +167,7 @@
  '(elfeed-feeds
    '("https://www.spreaker.com/show/4253631/episodes/feed" "https://www.spreaker.com/show/4244348/episodes/feed" "https://feeds.redcircle.com/c6d2e869-22ae-4e68-b88e-e1957d070d3a" "https://anchor.fm/s/62d12970/podcast/rss" "https://feeds.buzzsprout.com/1890340.rss"))
  '(package-selected-packages
-   '(bongo magit emms elfeed slime setup paredit highlight-indent-guides nov\.el nov ef-themes devdocs-browser emacs-devdocs-browser dirvish q4 eglot lsp-ui dap-mode company-mode company lsp-pyright flycheck lsp-mode selectrum orderless consult marginalia which-key nix-mode use-package doom-themes))
+   '(pcmpl-args kind-icon corfu-doc corfu company-org-block bongo magit emms elfeed slime setup paredit highlight-indent-guides nov\.el nov ef-themes devdocs-browser emacs-devdocs-browser dirvish q4 eglot lsp-ui dap-mode company-mode company lsp-pyright flycheck lsp-mode selectrum orderless consult marginalia which-key nix-mode use-package doom-themes))
  '(warning-suppress-log-types '((lsp-mode) (lsp-mode) (comp)))
  '(warning-suppress-types '((lsp-mode) (comp))))
 (custom-set-faces
