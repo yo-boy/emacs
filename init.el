@@ -57,7 +57,14 @@
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
   :option (setq  ef-themes-to-toggle '(ef-day ef-winter))
-  (load-theme 'ef-day :no-confirm))
+  (load-theme 'ef-day :no-confirm)
+  (:global "C-c t" ef-themes-toggle))
+
+;; easily switch to edit files with sudo
+(setup (:package sudo-edit)
+  :option
+  (:global
+   "C-c C-r" sudo-edit))
 
 ;; which-key shows what the next keys can do after the current sequences
 (setup (:package  which-key)
