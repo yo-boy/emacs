@@ -36,8 +36,8 @@
 ;; Do not saves duplicates in kill-ring
 (customize-set-variable 'kill-do-not-save-duplicates t)
 
-;;(eval-after-load "term"
-;;  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
+(eval-after-load "term"
+ '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
 
 ;; add line numbers for programming
 (add-hook 'prog-mode-hook  #'display-line-numbers-mode)
