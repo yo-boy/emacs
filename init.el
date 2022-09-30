@@ -75,6 +75,7 @@
 (setup (:package vertico consult  marginalia  orderless)
   ;; enable richer annotations using the Marginalia package
   (:option vertico-mode 1
+	   vertico-cycle t
 	   marginalia-mode 1
 	   savehist-mode 1
 	   enable-recursive-minibuffers t
