@@ -9,6 +9,9 @@
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
+;; replace highlighted text when you type.
+(delete-selection-mode 1)
+
 ;; remove the tool bar
 (tool-bar-mode -1)
 
@@ -57,7 +60,7 @@
 		    :font "Hack"
 		    :foundry "SRC"
 		    :weight 'normal
-		    :height 110)
+		    :height 115)
 
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
