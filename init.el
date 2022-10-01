@@ -6,11 +6,14 @@
 (package-initialize)
 (require 'setup)
 
-;;make lines wrap on words
+;; make lines wrap on words
 (global-visual-line-mode 1)
 
-;;remove the tool bar
+;; remove the tool bar
 (tool-bar-mode -1)
+
+;; add right click menu
+(context-menu-mode 1)
 
 ;; Revert buffers when the underlying file has changed
 (gdlobal-auto-revert-mode 1)
@@ -24,7 +27,7 @@
 ;; enable tab completion
 (setq tab-always-indent 'complete)
 
-;;save minibuffer history
+;; save minibuffer history
 (savehist-mode 1)
 (cons 'savehist-additional-variables 'command-history)
 (cons 'savehist-additional-variables 'file-name-history)
