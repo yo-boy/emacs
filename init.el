@@ -13,7 +13,9 @@
 (tool-bar-mode -1)
 
 ;; Revert buffers when the underlying file has changed
-(global-auto-revert-mode 1)
+(gdlobal-auto-revert-mode 1)
+;; revert all buffers
+(setq global-auto-revert-non-file-buffers 1)
 
 ;; Typed text replaces the selection if the selection is active,
 ;; pressing delete or backspace deletes the selection.
