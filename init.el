@@ -19,7 +19,7 @@
 (context-menu-mode 1)
 
 ;; Revert buffers when the underlying file has changed
-(gdlobal-auto-revert-mode 1)
+(global-auto-revert-mode 1)
 ;; revert all buffers
 (setq global-auto-revert-non-file-buffers 1)
 
