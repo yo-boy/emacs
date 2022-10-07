@@ -79,8 +79,11 @@
   (:option  which-key-mode 1
             which-key-idle-delay 0.4))
 
+;; auctex
+(setup (:package auctex))
+
 ;; ui stuff
-(setup (:package vertico consult  marginalia  orderless)
+(setup (:package vertico consult marginalia orderless)
   ;; enable richer annotations using the Marginalia package
   (:option vertico-mode 1
 	   vertico-cycle t
