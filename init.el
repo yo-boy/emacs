@@ -6,6 +6,15 @@
 (package-initialize)
 (require 'setup)
 
+;; don't leave backup files
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups")))
+      backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
