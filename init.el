@@ -77,6 +77,10 @@
   (load-theme 'ef-day :no-confirm)
   (:global "C-c t" ef-themes-toggle))
 
+;; gpg pinentry
+(setup (:package pinentry)
+  :option #'pinentry-start)
+
 ;; easily switch to edit files with sudo
 (setup (:package sudo-edit)
   :option
