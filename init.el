@@ -71,6 +71,16 @@
 		    :weight 'normal
 		    :height 115)
 
+(set-face-attribute 'default nil
+		    :font "Iosevka"
+		    :foundry "curly"
+		    :weight 'normal
+		    :height 130)
+
+;; remove scrollbar from minibuffer.
+(set-window-scroll-bars (minibuffer-window) nil nil)
+
+;; setup themes
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
   :option (setq  ef-themes-to-toggle '(ef-day ef-winter))
