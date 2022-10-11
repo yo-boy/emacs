@@ -4,6 +4,15 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+;; install the setup macro if it isn't installed.
+(if
+    (package-installed-p 'setup)
+    nil
+  (if
+      (memq 'setup package-archive-contents)
+      nil
+    (package-refresh-contents))
+  (package-install 'setup))
 (require 'setup)
 
 ;; don't leave backup files
@@ -59,23 +68,20 @@
 ;; add line numbers for programming
 (add-hook 'prog-mode-hook  #'display-line-numbers-mode)
 
-;; Set further font and theme customizations
-;; (set-face-attribute 'default nil
-;;                     :font "Roboto Mono"
-;;                     :weight 'normal
-;;                     :height 110)
+;; set fonts
 
-(set-face-attribute 'default nil
-		    :font "Hack"
-		    :foundry "SRC"
-		    :weight 'normal
-		    :height 115)
+;; (set-face-attribute 'default nil
+;; 		    :font "Iosevka Slab"
+;; 		    :height 125
+;; 		    :width 'normal)
+;; (set-face-attribute 'fixed-pitch nil :font "Iosevka Slab")
 
 (set-face-attribute 'default nil
 		    :font "Iosevka"
-		    :foundry "curly"
-		    :weight 'normal
-		    :height 130)
+		    :height 125
+		    :width 'normal)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka")
+(set-face-attribute 'variable-pitch nil :font "Iosevka Etoile")
 
 ;; remove scrollbar from minibuffer.
 (set-window-scroll-bars (minibuffer-window) nil nil)
@@ -84,7 +90,7 @@
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
   :option (setq  ef-themes-to-toggle '(ef-day ef-winter))
-  (load-theme 'ef-day :no-confirm)
+  (load-theme 'ef-day t)
   (:global "C-c t" ef-themes-toggle))
 
 ;; gpg pinentry
