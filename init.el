@@ -75,7 +75,7 @@
 ;; 		    :width 'normal)
 ;; (set-face-attribute 'fixed-pitch nil :font "Iosevka Slab")
 
-(set-face-attribute 'default nil :font "Iosevka-12.5" :width 'normal)
+(set-face-attribute 'default nil :font "Iosevka" :height 125 :width 'normal)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka")
 (set-face-attribute 'variable-pitch nil :font "Iosevka Etoile")
 
