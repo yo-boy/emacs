@@ -24,6 +24,12 @@
       kept-old-versions 2
       version-control t)
 
+;; resize correctly
+(setq frame-resize-pixelwise t)
+
+;; set initial frame(window) size
+(set-frame-size (selected-frame) 1040 1000 t)
+
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
