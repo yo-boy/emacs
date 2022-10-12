@@ -77,10 +77,7 @@
 
 (set-face-attribute 'default nil :font "Iosevka" :height 125 :width 'normal)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka")
-(set-face-attribute 'variable-pitch nil :font "Iosevka Etoile")
-
-;; remove scrollbar from minibuffer.
-(set-window-scroll-bars (minibuffer-window) nil nil)
+(set-face-attribute 'variable-pitch nil :font "Iosevka Aile")
 
 ;; setup themes
 (defvar ef-themes-to-toggle)
