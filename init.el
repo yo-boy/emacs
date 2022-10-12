@@ -186,18 +186,12 @@
   (:file-match "\\.nix\\'"))
 
 ;; slime for common lisp
-(setup (:package slime)
-  (:option inferior-lisp-program "ccl"))
+(setup (:package sly)
+  (:option inferior-lisp-program "sbcl"))
 
 ;; nov.el for reading
 (setup (:package  nov)
   (:file-match "\\.epub\\'"))
-
-;; elfeed rss tracker
-(setup (:package elfeed))
-
-;; bongo to play audio
-(setup (:package bongo))
 
 (setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
