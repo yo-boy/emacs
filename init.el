@@ -142,9 +142,8 @@
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (:option lsp-keymap-prefix "C-l"
 	   lsp-ui-mode 1 )
-  (add-hook 'python-mode-hook #'lsp-deferred))
-
-
+  (add-hook 'python-mode-hook #'lsp-deferred)
+  (add-hook 'nix-mode-hook #'lsp-deferred))
 
 ;; flycheck
 (setup flycheck
