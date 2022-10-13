@@ -128,19 +128,23 @@
    "C-s" consult-line)
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
-(setup-define :lsp-langs
-  (lambda (mode)
-    `(add-hook ',(intern  (concat (symbol-name mode) "-hook")) #'lsp))
-  :documentation
-  "hook the lsp function to a mode hook"
-  :repeatable t)
+;; (setup-define :lsp-langs
+;;   (lambda (mode)
+;;     `(add-hook ',(intern  (concat (symbol-name mode) "-hook")) #'lsp))
+;;   :documentation
+;;   "hook the lsp function to a mode hook"
+;;   :repeatable t)
+;;(:lsp-langs python-mode java-mode)
 
-;; lsp-mode
-(setup (:package lsp-mode lsp-ui dap-mode)
-  (:lsp-langs python-mode java-mode)
+
+;; code completion
+(setup (:package lsp-mode lsp-ui dap-mode)					
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (:option lsp-keymap-prefix "C-l"
-	   lsp-ui-mode 1 ))
+	   lsp-ui-mode 1 )
+  (add-hook 'python-mode-hook #'lsp-deferred))
+
+
 
 ;; flycheck
 (setup flycheck
