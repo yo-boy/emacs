@@ -24,6 +24,13 @@
       kept-old-versions 2
       version-control t)
 
+;; indent buffer function
+(defun my/indent-buffer ()
+  "Indent each nonblank line in the buffer."
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+
 ;; resize correctly
 (setq frame-resize-pixelwise t)
 
@@ -92,6 +99,10 @@
   :option (setq  ef-themes-to-toggle '(ef-day ef-winter))
   (load-theme 'ef-day t)
   (:global "C-c t" ef-themes-toggle))
+
+;; ace-window for managing windows
+(setup (:package ace-window)
+  :option (:global "C-x o" 'ace-window))
 
 ;; gpg pinentry
 (setup (:package pinentry)
