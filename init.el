@@ -120,7 +120,9 @@
             which-key-idle-delay 0.4))
 
 ;; auctex
-(setup (:package auctex))
+(setup (:package auctex)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t))
 
 ;; ui stuff
 (setup (:package vertico consult marginalia orderless)
@@ -212,6 +214,13 @@
 ;; nov.el for reading
 (setup (:package  nov)
   (:file-match "\\.epub\\'"))
+
+;; mixed pitch fonts in org mode
+(setup (:package mixed-pitch)
+  (:hook-into text-mode))
+
+;; setup mysql
+(setup (:package emacsql emacsql-mysql))
 
 (setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
