@@ -37,6 +37,9 @@
 ;; set initial frame(window) size
 (set-frame-size (selected-frame) 1040 1000 t)
 
+;; set initial frame(window) position
+(set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
+
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
