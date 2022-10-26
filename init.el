@@ -148,6 +148,18 @@
    "C-s" consult-line)
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
+
+;; TODO wip do stuff, fix it so it reuses the same buffer and add something that makes it not split endlessly
+;; ;; bufler
+;; (setup (:package bufler)
+;;   (defun my/bufler-list (&optional)
+;;     (interactive)
+;;     (split-window-below)
+;;     (windmove-down)
+;;     (bufler-list)
+;;     (previous-window))
+;;   (:global "C-x C-b" #'my/bufler-list))
+
 ;; (setup-define :lsp-langs
 ;;   (lambda (mode)
 ;;     `(add-hook ',(intern  (concat (symbol-name mode) "-hook")) #'lsp))
