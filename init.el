@@ -81,6 +81,10 @@
 ;; add line numbers for programming
 (add-hook 'prog-mode-hook  #'display-line-numbers-mode)
 
+;; previous and next buffer on f-keys
+(define-key global-map [f1] #'previous-buffer)
+(define-key global-map [f2] #'next-buffer)
+
 ;; set fonts
 
 ;; (set-face-attribute 'default nil
