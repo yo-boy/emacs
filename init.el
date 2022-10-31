@@ -170,12 +170,26 @@
 
 
 ;; code completion
-(setup (:package lsp-mode lsp-ui dap-mode)					
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  (:option lsp-keymap-prefix "C-l"
-	   lsp-ui-mode 1 )
-  (add-hook 'python-mode-hook #'lsp-deferred)
-  (add-hook 'nix-mode-hook #'lsp-deferred))
+;; (setup (:package lsp-mode lsp-ui dap-mode lsp-python-ms)
+;;   ;(setq lsp-python-ms-executable (executable-find "python-language-server"))
+;;   ;(setq lsp-python-ms-auto-install-server t)
+;;   ;(setq lsp-python-ms-extra-paths '(""))
+;;   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+;;   (:option lsp-keymap-prefix "C-l"
+;; 	   lsp-ui-mode 1 )
+;;   (add-hook 'python-mode-hook #'lsp-deferred)
+;;   (add-hook 'nix-mode-hook #'lsp-deferred))
+
+(setup (:package eglot yasnippet)
+  (yas-global-mode 1)
+  (add-hook 'nix-mode-hook 'eglot-ensure)
+  (add-hook 'python-mode-hook 'eglot-ensure))
+
+;; conda
+(setup (:package conda)
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  (conda-env-autoactivate-mode t))
 
 ;; flycheck
 (setup flycheck
