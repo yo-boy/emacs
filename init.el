@@ -254,6 +254,8 @@
 
 ;; setup mysql
 (setup (:package emacsql emacsql-mysql))
+(setup (:package sqlup-mode)
+  (:hook-into sql-mode-hook))
 
 (setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
