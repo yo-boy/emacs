@@ -1,5 +1,17 @@
 ;; -*- lexical-binding: t -*-
 
+;; Startup time
+(defun efs/display-startup-time ()
+  (message
+   "Emacs loaded in %s with %d garbage collections."
+   (format
+    "%.2f seconds"
+    (float-time
+     (time-subtract after-init-time before-init-time)))
+   gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
 ;; use melpa packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -48,6 +60,9 @@
 
 ;; remove the tool bar
 (tool-bar-mode -1)
+
+;; disable scroll bar
+(scroll-bar-mode -1)
 
 ;; add right click menu
 (context-menu-mode 1)
@@ -252,10 +267,18 @@
 (setup (:package mixed-pitch)
   (:hook-into text-mode))
 
+;; org latex pdf export don't ask for 'yes'
+(setq revert-without-query '(".pdf"))
+
 ;; setup mysql
 (setup (:package emacsql emacsql-mysql))
 (setup (:package sqlup-mode)
   (:hook-into sql-mode-hook))
+
+(setup (:package org-roam org-roam-ui)
+  (:option
+   org-roam-directory "~/Documents/org-roam-notes/")
+    (org-roam-db-autosync-mode))
 
 (setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
