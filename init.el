@@ -229,8 +229,7 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
   (add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
-  (add-to-list 'completion-at-point-functions #'yasnippet-capf)
-  )
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (defun my/eglot-cap-config ()
   (setq-local completion-at-point-functions
