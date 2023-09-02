@@ -182,8 +182,8 @@
 
 (setup (:package eglot yasnippet yasnippet-snippets)
   (yas-global-mode 1)
-  ;;(define-key yas-minor-mode-map (kbd "<tab>") nil)
-  ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
   (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'python-mode-hook 'eglot-ensure)
   (add-hook 'c-mode 'eglot-ensure)
@@ -236,7 +236,7 @@
   (setq-local completion-at-point-functions
               (list (cape-super-capf
                      #'eglot-completion-at-point
-					;#'cape-dabbrev
+		     ;#'cape-dabbrev
                      #'yasnippet-capf))))
 (add-hook 'eglot-managed-mode-hook #'my/eglot-cap-config)
 
@@ -252,12 +252,14 @@
 ;; show vc changes in file
 (setup (:package diff-hl)
   (:hook-into prog-mode)
-  (:option diff-hl-flydiff-mode t))
+  (:option diff-hl-flydiff-mode t)
+  global-diff-hl-show-hunk-mouse-mode
+  (:global "C-c h" diff-hl-show-hunk))
 
 ;; highlight-indent-guides
 (setup (:package highlight-indent-guides)
   (:hook-into prog-mode)
-  (:option highlight-indent-guides-method 'bitmap))
+  (:option highlight-indent-guides-method 'character))
 
 ;; paredit for easier s-expression navigation
 (setup (:package paredit)
