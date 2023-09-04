@@ -239,6 +239,13 @@
                      #'yasnippet-capf))))
 (add-hook 'eglot-managed-mode-hook #'my/eglot-cap-config)
 
+(defun my/elisp-cap-config ()
+  (setq-local completion-at-point-functions
+	      (list (cape-super-capf
+		     #'elisp-completion-at-point
+		     #'yasnippet-capf))))
+(add-hook 'emacs-lisp-mode-hook #'my/elisp-cap-config)
+
 ;; autocompletion for shell commands
 (setup (:package pcmpl-args))
 ;; (add-hook 'eshell-mode-hook
