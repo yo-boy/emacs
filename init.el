@@ -89,6 +89,13 @@
 ;; automatic pairs
 (electric-pair-mode 1)
 
+;; enable tab-bar-mode
+(tab-bar-mode 1)
+(setq tab-bar-show 1)
+
+;; tab-line-mode
+(tab-line-mode 1)
+
 ;; Do not saves duplicates in kill-ring
 (customize-set-variable 'kill-do-not-save-duplicates t)
 
@@ -161,7 +168,8 @@
    "C-x b" consult-buffer
    "C-s" consult-line
    "C-c f" consult-flymake
-   "C-c TAB" consult-yasnippet)
+   ;"C-c TAB" consult-yasnippet
+   )
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
 (setq help-window-select t)
