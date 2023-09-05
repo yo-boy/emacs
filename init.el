@@ -1,7 +1,13 @@
+;;; package --- Summary
 ;; -*- lexical-binding: t -*-
 
+;;; Commentary:
+;This file provides my cutom Emacs configuration.
+
+;;; Code:
 ;; Startup time
-(defun efs/display-startup-time ()
+(defun my/display-startup-time ()
+  "This function will return the startup time."
   (message
    "Emacs loaded in %s with %d garbage collections."
    (format
@@ -10,7 +16,7 @@
      (time-subtract after-init-time before-init-time)))
    gcs-done))
 
-(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+(add-hook 'emacs-startup-hook #'my/display-startup-time)
 
 ;; use melpa packages
 (require 'package)
@@ -228,14 +234,16 @@
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (defun my/eglot-cap-config ()
+  "This function will replace the eglot cap function with one that integrates 'yasnippet-capf'."
   (setq-local completion-at-point-functions
               (list (cape-super-capf
                      #'eglot-completion-at-point
-		     ;#'cape-dabbrev
+					;#'cape-dabbrev
                      #'yasnippet-capf))))
 (add-hook 'eglot-managed-mode-hook #'my/eglot-cap-config)
 
 (defun my/elisp-cap-config ()
+  "This function will replace the elisp-capf with one that integrates 'yasnippet-capf'."
   (setq-local completion-at-point-functions
 	      (list (cape-super-capf
 		     #'elisp-completion-at-point
