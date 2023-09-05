@@ -177,17 +177,6 @@
 (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
 (setq eldoc-echo-area-display-truncation-message t)
 
-;; TODO wip do stuff, fix it so it reuses the same buffer and add something that makes it not split endlessly
-;; ;; bufler
-;; (setup (:package bufler)
-;;   (defun my/bufler-list (&optional)
-;;     (interactive)
-;;     (split-window-below)
-;;     (windmove-down)
-;;     (bufler-list)
-;;     (previous-window))
-;;   (:global "C-x C-b" #'my/bufler-list))
-
 (setup (:package eglot yasnippet yasnippet-snippets)
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
@@ -216,7 +205,6 @@
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)
   (:bind-into corfu-map
     "S-SPC" corfu-insert-separator
-    ;;"SPC" corfu-insert-separator
     "<M-up>" #'corfu-doc-scroll-down
     "<M-down>" #'corfu-doc-scroll-up
     "M-d" #'corfu-doc-toggle))
@@ -256,10 +244,6 @@
 
 ;; autocompletion for shell commands
 (setup (:package pcmpl-args))
-;; (add-hook 'eshell-mode-hook
-;;           (lambda ()
-;;             (setq-local corfu-auto nil)
-;;             (corfu-mode)))
 
 (setup (:package  devdocs-browser))
 
