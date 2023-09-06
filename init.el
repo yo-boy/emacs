@@ -100,7 +100,7 @@
 (setq tab-bar-show 1)
 
 ;; tab-line-mode
-(tab-line-mode 1)
+(global-tab-line-mode 1)
 
 ;; Do not saves duplicates in kill-ring
 (customize-set-variable 'kill-do-not-save-duplicates t)
@@ -190,7 +190,8 @@
   (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'python-mode-hook 'eglot-ensure)
   (add-hook 'c-mode 'eglot-ensure)
-  (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode))
+  (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
+  (:bind-into eglot-mode-map "C-c g" #'eglot-code-actions))
 
 ;; Enabled inline static analysis
 (add-hook 'prog-mode-hook #'flymake-mode)
