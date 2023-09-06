@@ -102,6 +102,9 @@
 ;; tab-line-mode
 (global-tab-line-mode 1)
 
+;; refresh (revert) files in buffers
+(global-auto-revert-mode 1)
+
 ;; Do not saves duplicates in kill-ring
 (customize-set-variable 'kill-do-not-save-duplicates t)
 
