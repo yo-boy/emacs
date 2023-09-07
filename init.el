@@ -282,7 +282,8 @@
 (setup (:package rustic)
   (:option rustic-lsp-client 'eglot
 	   rustic-format-trigger 'on-save
-	   rustic-cargo-clippy-trigger-fix 'on-compile))
+	   rustic-cargo-clippy-trigger-fix 'on-compile)
+  (:bind-into rustic-mode-map "C-c C-c u" #'rustic-cargo-update))
 
 ;; nix mode
 (setup (:package  nix-mode)
