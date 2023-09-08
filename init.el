@@ -96,8 +96,8 @@
 (electric-pair-mode 1)
 
 ;; enable tab-bar-mode
-(tab-bar-mode 1)
 (setq tab-bar-show 1)
+(tab-bar-mode 1)
 
 ;; tab-line-mode
 (global-tab-line-mode 1)
