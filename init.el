@@ -136,6 +136,10 @@
 (setup (:package ace-window)
   :option (:global "C-x o" 'ace-window))
 
+;; expand region
+(setup (:package expand-region)
+  (:global "C-`" #'er/expand-region))
+
 ;; gpg pinentry
 (setup (:package pinentry)
   :option #'pinentry-start)
