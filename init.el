@@ -138,7 +138,7 @@
 
 ;; expand region
 (setup (:package expand-region)
-  (:global "C-`" #'er/expand-region))
+  (:global "C-;" #'er/expand-region))
 
 ;; gpg pinentry
 (setup (:package pinentry)
