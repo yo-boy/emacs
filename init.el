@@ -197,6 +197,11 @@
   (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
   (:bind-into eglot-mode-map "C-c g" #'eglot-code-actions))
 
+(setup (:package tree-sitter-langs)
+  (global-tree-sitter-mode 1))
+
+(add-hook 'tree-sitter-mode-hook #'tree-sitter-hl-mode)
+
 ;; Enabled inline static analysis
 (add-hook 'prog-mode-hook #'flymake-mode)
 (setq help-at-pt-display-when-idle t)
@@ -287,7 +292,7 @@
   (:bind-into rustic-mode-map "C-c C-c u" #'rustic-cargo-update))
 
 ;; nix mode
-(setup (:package  nix-mode)
+(setup (:package  nix-mode nix-ts-mode)
   (:file-match "\\.nix\\'"))
 
 ;; support for some programming languages
