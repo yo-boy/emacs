@@ -57,9 +57,6 @@
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
-;; replace highlighted text when you type.
-(delete-selection-mode 1)
-
 ;; remove the tool bar
 (tool-bar-mode -1)
 
@@ -79,7 +76,7 @@
 
 ;; Typed text replaces the selection if the selection is active,
 ;; pressing delete or backspace deletes the selection.
-(delete-selection-mode)
+(delete-selection-mode 1)
 
 ;; enable tab completion
 (setq tab-always-indent 'complete)
