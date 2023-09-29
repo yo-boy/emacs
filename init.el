@@ -287,7 +287,8 @@
 (setup (:package rustic)
   (:option rustic-lsp-client 'eglot
 	   rustic-format-trigger 'on-save
-	   rustic-cargo-clippy-trigger-fix 'on-compile)
+	   rustic-cargo-clippy-trigger-fix 'on-compile
+	   rustic-ansi-faces ["black" "red3" "green3" "yellow3" "purple2" "magenta3" "cyan3" "white"])
   (:bind-into rustic-mode-map "C-c C-c u" #'rustic-cargo-update))
 
 ;; nix mode
