@@ -23,10 +23,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 ;; install the setup macro if it isn't installed.
-(if
-    (package-installed-p 'setup)
-    nil
+(unless (package-installed-p 'setup)
   (package-install 'setup))
+
 (require 'setup)
 
 ;; don't leave backup files
