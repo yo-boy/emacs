@@ -2,7 +2,7 @@
 ;; -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;This file provides my cutom Emacs configuration.
+					;This file provides my cutom Emacs configuration.
 
 ;;; Code:
 ;; Startup time
@@ -44,6 +44,10 @@
   (interactive)
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
+
+;; desable splash screen
+(setq inhibit-startup-message t)
+(setq initial-scratch-message ";; This buffer is for text that is not saved, and for Lisp evaluation.\n\n")
 
 ;; resize correctly
 (setq frame-resize-pixelwise t)
@@ -115,6 +119,7 @@
 (define-key global-map [f1] #'previous-buffer)
 (define-key global-map [f2] #'next-buffer)
 
+;; don't leave files littered around
 (setup (:package no-littering)
   (require 'no-littering)
   (no-littering-theme-backups))
@@ -298,7 +303,7 @@
 ;; web mode
 (setup (:package web-mode)
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
- ; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+					; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
