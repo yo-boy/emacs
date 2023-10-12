@@ -115,9 +115,9 @@
 (define-key global-map [f1] #'previous-buffer)
 (define-key global-map [f2] #'next-buffer)
 
-(setup (:package no-littering))
-(require 'no-littering)
-(no-littering-theme-backups)
+(setup (:package no-littering)
+  (require 'no-littering)
+  (no-littering-theme-backups))
 
 ;; set fonts
 (set-face-attribute 'default nil :font "Iosevka" :height 125 :width 'normal)
