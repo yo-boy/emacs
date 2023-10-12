@@ -29,13 +29,14 @@
 (require 'setup)
 
 ;; don't leave backup files
-(setq backup-directory-alist
-      `(("." . ,(concat user-emacs-directory "backups")))
-      backup-by-copying t
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
+(setq
+ backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
+ backup-by-copying t
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)
+
 
 ;; indent buffer function
 (defun my/indent-buffer ()
@@ -113,6 +114,10 @@
 ;; previous and next buffer on f-keys
 (define-key global-map [f1] #'previous-buffer)
 (define-key global-map [f2] #'next-buffer)
+
+(setup (:package no-littering))
+(require 'no-littering)
+(no-littering-theme-backups)
 
 ;; set fonts
 (set-face-attribute 'default nil :font "Iosevka" :height 125 :width 'normal)
