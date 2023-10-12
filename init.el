@@ -123,7 +123,7 @@
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
   :option (setq  ef-themes-to-toggle '(ef-day
-				       ;ef-autumn
+					;ef-autumn
 				       ef-cherie)) ;; was day and bio
   (load-theme 'ef-day t)
   (:global "C-c t" ef-themes-toggle))
@@ -177,7 +177,7 @@
    "C-x b" consult-buffer
    "C-s" consult-line
    "C-c f" consult-flymake
-   ;"C-c TAB" consult-yasnippet
+					;"C-c TAB" consult-yasnippet
    )
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
@@ -289,6 +289,30 @@
 	   rustic-cargo-clippy-trigger-fix 'on-compile
 	   rustic-ansi-faces ["black" "red3" "green3" "yellow3" "purple2" "magenta3" "cyan3" "white"])
   (:bind-into rustic-mode-map "C-c C-c u" #'rustic-cargo-update))
+
+;; web mode
+(setup (:package web-mode)
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+ ; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (:option
+   web-mode-enable-auto-expanding t
+   web-mode-enable-current-element-highlight t
+   web-mode-enable-auto-closing t
+   web-mode-enable-auto-pairing t))
+
+(setup (:package php-mode))
+
+;; Add lsp or lsp-deferred function call to functions for your php-mode customization
+(defun init-php-mode ()
+  (eglot-ensure))
+
+(with-eval-after-load 'php-mode
+  ;; If phpactor command is not installed as global, remove next ;; and write the full path
+  ;; (custom-set-variables '(lsp-phpactor-path "/path/to/phpactor"))
+  (add-hook 'php-mode-hook #'init-php-mode))
 
 ;; nix mode
 (setup (:package  nix-mode nix-ts-mode)
