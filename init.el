@@ -130,13 +130,18 @@
 (set-face-attribute 'variable-pitch nil :font "Iosevka Aile")
 
 ;; setup themes
-(defvar ef-themes-to-toggle)
-(setup (:package  ef-themes)
-  :option (setq  ef-themes-to-toggle '(ef-day
-					;ef-autumn
-				       ef-cherie)) ;; was day and bio
-  (load-theme 'ef-day t)
-  (:global "C-c t" ef-themes-toggle))
+(setup (:package color-theme-sanityinc-tomorrow)
+; (load-theme 'sanityinc-tomorrow-night t)
+  (load-theme 'sanityinc-tomorrow-eighties t))
+;; (defvar ef-themes-to-toggle)
+;; (setup (:package  ef-themes)
+;;   :option (setq  ef-themes-to-toggle '(ef-autumn
+;; 					;ef-autumn
+;; 				       ef-symbiosis)) ;; was day and bio
+;;   (load-theme 'ef-bio t)
+;;   (:global "C-c t" ef-themes-toggle))
+
+
 
 ;; ace-window for managing windows
 (setup (:package ace-window)
