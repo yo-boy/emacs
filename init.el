@@ -353,7 +353,7 @@
 (setq org-hide-emphasis-markers nil)
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
-
+(require 'org)
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.75))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.5))))
