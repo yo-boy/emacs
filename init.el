@@ -238,8 +238,8 @@
     "<M-down>" #'corfu-doc-scroll-up
     "M-d" #'corfu-doc-toggle))
 
-(setup (:package corfu-candidate-overlay)
-  (:option corfu-candidate-overlay-mode +1))
+;; (setup (:package corfu-candidate-overlay)
+;;   (:option corfu-candidate-overlay-mode +1))
 
 (setup (:package cape yasnippet-capf)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -348,6 +348,19 @@
 (setup (:package eat)
   (:option eat-kill-buffer-on-exit t
 	   eat-enable-mouse t))
+
+;;; org mode config
+(setq org-hide-emphasis-markers nil)
+(setq org-startup-indented t)
+(setq org-hide-leading-stars t)
+
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :height 1.75))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.5))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.25))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+ (set-face-attribute 'org-document-title nil :height 2.0 :underline nil))
 
 ;; mixed pitch fonts in org mode
 (setup (:package mixed-pitch)
