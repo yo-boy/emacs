@@ -135,8 +135,8 @@
 ;;   (load-theme 'sanityinc-tomorrow-eighties t))
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
-  :option (setq  ef-themes-to-toggle '(ef-maris-dark ef-day))
-  (load-theme 'ef-maris-dark t)
+  :option (setq  ef-themes-to-toggle '(ef-maris-dark ef-melissa-dark))
+  (load-theme 'ef-melissa-dark t)
   (:global "C-c t" ef-themes-toggle))
 
 ;; ace-window for managing windows
