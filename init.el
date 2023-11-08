@@ -129,6 +129,37 @@
 (set-face-attribute 'fixed-pitch nil :font "Iosevka")
 (set-face-attribute 'variable-pitch nil :font "Iosevka Aile")
 
+;; all the icons
+(setup (:package all-the-icons all-the-icons-dired all-the-icons-completion)
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+  (all-the-icons-completion-mode))
+
+;; page break lines
+(setup (:package page-break-lines)
+  (global-page-break-lines-mode))
+
+;; dashboard
+(setup (:package dashboard)
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq dashboard-startup-banner 2)
+  (setq dashboard-center-content t)
+  (setq dashboard-items '((recents  . 5)
+                          (projects . 5)
+                          (agenda . 5)
+			  (bookmarks . 5)))
+  (setq dashboard-set-init-info t)
+  (setq dashboard-projects-backend 'project-el)
+  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-heading-icons '((recents   . "history")
+                                (bookmarks . "bookmark")
+                                (agenda    . "calendar")
+                                (projects  . "rocket")
+                                (registers . "database"))))
+
+
 ;; setup themes
 ;; (setup (:package color-theme-sanityinc-tomorrow)
 ;; ; (load-theme 'sanityinc-tomorrow-night t)
