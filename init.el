@@ -119,6 +119,10 @@
 (define-key global-map [f1] #'previous-buffer)
 (define-key global-map [f2] #'next-buffer)
 
+;; buttons to start and end of buffer
+(define-key global-map (kbd "C-<next>") 'end-of-buffer)
+(define-key global-map (kbd "C-<prior>") 'beginning-of-buffer)
+
 ;; don't leave files littered around
 (setup (:package no-littering)
   (require 'no-littering)
