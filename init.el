@@ -124,11 +124,6 @@
 (define-key global-map (kbd "C-<next>") 'end-of-buffer)
 (define-key global-map (kbd "C-<prior>") 'beginning-of-buffer)
 
-;; don't leave files littered around
-;; (setup (:package no-littering)
-;;   (require 'no-littering)
-;;   (no-littering-theme-backups))
-
 ;; set fonts
 (set-face-attribute 'default nil :font "Iosevka" :height 125)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka")
@@ -291,7 +286,7 @@
 (defun my/eglot-cap-config ()
   "This function will replace the eglot cap function with one that integrates 'yasnippet-capf'."
   (setq-local completion-at-point-functions
-              (list (cape-super-capf
+              (list (cape-capf-super
                      #'eglot-completion-at-point
 					;#'cape-dabbrev
                      #'yasnippet-capf))))
@@ -300,7 +295,7 @@
 (defun my/elisp-cap-config ()
   "This function will replace the elisp-capf with one that integrates 'yasnippet-capf'."
   (setq-local completion-at-point-functions
-	      (list (cape-super-capf
+	      (list (cape-capf-super
 		     #'elisp-completion-at-point
 		     #'yasnippet-capf))))
 (add-hook 'emacs-lisp-mode-hook #'my/elisp-cap-config)
