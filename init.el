@@ -45,7 +45,7 @@
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
 
-;; desable splash screen
+;; disable splash screen
 (setq inhibit-startup-message t)
 (setq initial-scratch-message ";; This buffer is for text that is not saved, and for Lisp evaluation.\n\n")
 
@@ -86,12 +86,13 @@
 (setq tab-always-indent 'complete)
 
 ;; save minibuffer history
-(savehist-mode 1)
-(cons 'savehist-additional-variables 'command-history)
-(cons 'savehist-additional-variables 'file-name-history)
+;(savehist-mode 1)
+;(cons 'savehist-additional-variables 'command-history)
+;(cons 'savehist-additional-variables 'file-name-history)
 
 ;; recent files mode
 (recentf-mode 1)
+(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; automatic pairs
 (electric-pair-mode 1)
@@ -170,7 +171,7 @@
 ;;   (load-theme 'sanityinc-tomorrow-eighties t))
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
-  :option (setq  ef-themes-to-toggle '(ef-maris-dark ef-melissa-dark))
+  :option (setq  ef-themes-to-toggle '(ef-arbutus ef-melissa-dark))
   (load-theme 'ef-melissa-dark t)
   (:global "C-c t" ef-themes-toggle))
 
