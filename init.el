@@ -86,13 +86,13 @@
 (setq tab-always-indent 'complete)
 
 ;; save minibuffer history
-;(savehist-mode 1)
-;(cons 'savehist-additional-variables 'command-history)
-;(cons 'savehist-additional-variables 'file-name-history)
+(savehist-mode 1)
+(cons 'savehist-additional-variables 'command-history)
+(cons 'savehist-additional-variables 'file-name-history)
 
 ;; recent files mode
 (recentf-mode 1)
-(run-at-time nil (* 5 60) 'recentf-save-list)
+;;(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; automatic pairs
 (electric-pair-mode 1)
@@ -125,9 +125,9 @@
 (define-key global-map (kbd "C-<prior>") 'beginning-of-buffer)
 
 ;; don't leave files littered around
-(setup (:package no-littering)
-  (require 'no-littering)
-  (no-littering-theme-backups))
+;; (setup (:package no-littering)
+;;   (require 'no-littering)
+;;   (no-littering-theme-backups))
 
 ;; set fonts
 (set-face-attribute 'default nil :font "Iosevka" :height 125)
