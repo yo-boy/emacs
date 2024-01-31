@@ -67,6 +67,9 @@
 ;; disable scroll bar
 (scroll-bar-mode -1)
 
+;; save place mode
+(save-place-mode 1)
+
 ;; add right click menu
 (context-menu-mode 1)
 
@@ -92,7 +95,7 @@
 
 ;; recent files mode
 (recentf-mode 1)
-;;(run-at-time nil (* 5 60) 'recentf-save-list)
+(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; automatic pairs
 (electric-pair-mode 1)
@@ -144,7 +147,7 @@
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   (setq dashboard-startup-banner 2)
   (setq dashboard-center-content t)
-  (setq dashboard-items '((recents  . 5)
+  (setq dashboard-items '((recents  . 10)
                           (projects . 5)
                           (agenda . 5)
 			  (bookmarks . 5)))
@@ -153,11 +156,12 @@
   (setq dashboard-icon-type 'all-the-icons)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
   (setq dashboard-heading-icons '((recents   . "history")
-                                (bookmarks . "bookmark")
-                                (agenda    . "calendar")
-                                (projects  . "rocket")
-                                (registers . "database"))))
+                                  (bookmarks . "bookmark")
+                                  (agenda    . "calendar")
+                                  (projects  . "rocket")
+                                  (registers . "database"))))
 
 
 ;; setup themes
@@ -238,9 +242,9 @@
   (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
   (:bind-into eglot-mode-map "C-c g" #'eglot-code-actions))
 
-(setup (:package tree-sitter-langs)
-  (global-tree-sitter-mode 1)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (setup (:package tree-sitter-langs)
+;;   (global-tree-sitter-mode 1)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;; Enabled inline static analysis
 (add-hook 'prog-mode-hook #'flymake-mode)
@@ -277,9 +281,9 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
   ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-  (add-to-list 'completion-at-point-functions #'cape-ispell)
+;;  (add-to-list 'completion-at-point-functions #'cape-ispell)
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-  (add-to-list 'completion-at-point-functions #'cape-symbol)
+;;  (add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
@@ -370,6 +374,9 @@
 ;; nov.el for reading
 (setup (:package  nov)
   (:file-match "\\.epub\\'"))
+
+;; pdf-tools and save place
+(setup (:package pdf-tools saveplace-pdf-view bookmark))
 
 ;; In-Emacs Terminal Emulation
 (setup (:package eat)
