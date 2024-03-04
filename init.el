@@ -235,6 +235,7 @@
 
 (setup (:package eglot yasnippet yasnippet-snippets)
   (yas-global-mode 1)
+  (setq eglot-events-buffer-size 0)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
   (add-hook 'nix-mode-hook 'eglot-ensure)
@@ -275,26 +276,26 @@
 
 (setup (:package cape yasnippet-capf)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-history)
+  ;(add-to-list 'completion-at-point-functions #'cape-file)
+  ;(add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
   ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-;;  (add-to-list 'completion-at-point-functions #'cape-ispell)
+  ;;  (add-to-list 'completion-at-point-functions #'cape-ispell)
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-;;  (add-to-list 'completion-at-point-functions #'cape-symbol)
+  ;;  (add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (defun my/eglot-cap-config ()
   "This function will replace the eglot cap function with one that integrates 'yasnippet-capf'."
   (setq-local completion-at-point-functions
-              (list (cape-capf-super
-                     #'eglot-completion-at-point
-					;#'cape-dabbrev
-                     #'yasnippet-capf))))
+              (list
+                #'eglot-completion-at-point
+                #'yasnippet-capf
+		)))
 (add-hook 'eglot-managed-mode-hook #'my/eglot-cap-config)
 
 (defun my/elisp-cap-config ()
