@@ -228,6 +228,14 @@
    )
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
+;; code folding
+(setup (:package origami)
+  (global-origami-mode 1)
+  (add-to-list  'origami-parser-alist '(rustic-mode . origami-c-style-parser))
+  ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
+  (define-key origami-mode-map (kbd "C-r") #'origami-toggle-node))
+
+
 (setq help-window-select t)
 (setq eldoc-echo-area-prefer-doc-buffer 'maybe)
 (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
@@ -276,8 +284,8 @@
 
 (setup (:package cape yasnippet-capf)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  ;(add-to-list 'completion-at-point-functions #'cape-file)
-  ;(add-to-list 'completion-at-point-functions #'cape-history)
+					;(add-to-list 'completion-at-point-functions #'cape-file)
+					;(add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
