@@ -233,7 +233,7 @@
   (global-origami-mode 1)
   (add-to-list  'origami-parser-alist '(rustic-mode . origami-c-style-parser))
   ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
-  (define-key origami-mode-map (kbd "C-r") #'origami-toggle-node))
+  (define-key origami-mode-map (kbd "C-r") #'origami-forward-toggle-node))
 
 
 (setq help-window-select t)
