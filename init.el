@@ -18,6 +18,8 @@
 
 (add-hook 'emacs-startup-hook #'my/display-startup-time)
 
+(setq warning-minimum-level :error)
+
 ;; use melpa packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -130,7 +132,7 @@
 ;; set fonts
 (set-face-attribute 'default nil :font "Iosevka" :height 125)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka")
-(set-face-attribute 'variable-pitch nil :font "Iosevka Aile")
+;(set-face-attribute 'variable-pitch nil :font "Iosevka Aile")
 
 ;; all the icons
 (setup (:package all-the-icons all-the-icons-dired all-the-icons-completion)
@@ -415,6 +417,19 @@
 ;; mixed pitch fonts in org mode
 (setup (:package mixed-pitch)
   (:hook-into text-mode))
+
+;; setupd writing environment
+
+(setup (:package wc-mode)
+  (setq wc-modeline-format "[%W%w/%tw]"))
+
+(setup (:package olivetti)
+  (setq olivetti-body-width 90))
+
+(add-hook 'text-mode-hook 'olivetti-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'wc-mode)
+;;(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 ;; org latex pdf export don't ask for 'yes'
 (setq revert-without-query '(".pdf"))
