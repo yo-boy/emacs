@@ -389,7 +389,9 @@
 
 ;; pdf-tools and save place
 (setup (:package pdf-tools saveplace-pdf-view bookmark)
-  (pdf-view-midnight-minor-mode 1))
+  (:file-match ".pdf")
+  (pdf-tools-install)
+  (add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode))
 
 ;; In-Emacs Terminal Emulation
 (setup (:package eat)
