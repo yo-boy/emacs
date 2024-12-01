@@ -231,11 +231,11 @@
   (:bind-into minibuffer-local-map "C-r" #'consult-history))
 
 ;; code folding
-(setup (:package origami)
-  (global-origami-mode 1)
-  (add-to-list  'origami-parser-alist '(rustic-mode . origami-c-style-parser))
-  ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
-  (define-key origami-mode-map (kbd "C-r") #'origami-forward-toggle-node))
+;; (setup (:package origami)
+;;   (global-origami-mode 1)
+;;   (add-to-list  'origami-parser-alist '(rustic-mode . origami-c-style-parser))
+;;   ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
+;;   (define-key origami-mode-map (kbd "C-r") #'origami-forward-toggle-node))
 
 
 (setq help-window-select t)
@@ -388,7 +388,8 @@
   (:file-match "\\.epub\\'"))
 
 ;; pdf-tools and save place
-(setup (:package pdf-tools saveplace-pdf-view bookmark))
+(setup (:package pdf-tools saveplace-pdf-view bookmark)
+  (pdf-view-midnight-minor-mode 1))
 
 ;; In-Emacs Terminal Emulation
 (setup (:package eat)
@@ -399,6 +400,7 @@
 (setq org-hide-emphasis-markers nil)
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
+(setq org-html-checkbox-type 'html)
 (require 'org)
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.6))))
@@ -407,6 +409,19 @@
  '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
  (set-face-attribute 'org-document-title nil :height 1.8 :underline nil))
+
+(with-eval-after-load 'ol
+    (org-link-set-parameters
+     "img"
+     :follow (lambda (path arg) (org-link-open-as-file path arg))
+     :export (lambda (path desc backend cchannel)
+               (cond ((eq backend 'html)
+                      (format "<img style=\"max-width:80%%;margin:2em\" src=\"data:%s;base64,%s\">"
+                              (mailcap-file-name-to-mime-type path)
+                              (base64-encode-string
+                               (with-temp-buffer
+                                 (insert-file-contents path)
+                                  (buffer-string)))))))))
 
 ;; org-babel
 (org-babel-do-load-languages
@@ -418,7 +433,7 @@
 (setup (:package mixed-pitch)
   (:hook-into text-mode))
 
-;; setupd writing environment
+;; setup writing environment
 
 (setup (:package wc-mode)
   (setq wc-modeline-format "[%W%w/%tw]"))
