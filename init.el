@@ -237,6 +237,9 @@
 ;;   ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
 ;;   (define-key origami-mode-map (kbd "C-r") #'origami-forward-toggle-node))
 
+;; code folding
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(define-key hs-minor-mode-map (kbd "C-r") #'hs-toggle-hiding)
 
 (setq help-window-select t)
 (setq eldoc-echo-area-prefer-doc-buffer 'maybe)
