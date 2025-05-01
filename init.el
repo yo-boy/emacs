@@ -54,12 +54,6 @@
 ;; resize correctly
 (setq frame-resize-pixelwise t)
 
-;; set initial frame(window) size
-(set-frame-size (selected-frame) 1040 1000 t)
-
-;; set initial frame(window) position
-(set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
-
 ;; make lines wrap on words
 (global-visual-line-mode 1)
 
@@ -152,7 +146,7 @@
   (setq dashboard-center-content t)
   (setq dashboard-items '((recents  . 7)
                           (projects . 5)
-                          (agenda . 5)
+                          (agenda . 8)
 			  (bookmarks . 5)))
   (setq dashboard-set-init-info t)
   (setq dashboard-projects-backend 'project-el)
@@ -237,10 +231,6 @@
 ;;   ;(define-key origami-mode-map (kbd "C-<tab>") #'origami-toggle-node)
 ;;   (define-key origami-mode-map (kbd "C-r") #'origami-forward-toggle-node))
 
-;; code folding
-(add-hook 'prog-mode-hook #'hs-minor-mode)
-(define-key hs-minor-mode-map (kbd "C-r") #'hs-toggle-hiding)
-
 (setq help-window-select t)
 (setq eldoc-echo-area-prefer-doc-buffer 'maybe)
 (setq eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
@@ -254,6 +244,7 @@
   (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'python-mode-hook 'eglot-ensure)
   (add-hook 'c-mode 'eglot-ensure)
+  (add-hook 'rustic-mode 'eglot-ensure)
   (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
   (:bind-into eglot-mode-map "C-c g" #'eglot-code-actions))
 
@@ -414,19 +405,20 @@
  '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
  (set-face-attribute 'org-document-title nil :height 1.8 :underline nil))
+(setq org-timestamp-custom-formats '("%d/%m/%y %a" . "%d/%m/%y %a %H:%M"))
 
 (with-eval-after-load 'ol
-    (org-link-set-parameters
-     "img"
-     :follow (lambda (path arg) (org-link-open-as-file path arg))
-     :export (lambda (path desc backend cchannel)
-               (cond ((eq backend 'html)
-                      (format "<img style=\"max-width:80%%;margin:2em\" src=\"data:%s;base64,%s\">"
-                              (mailcap-file-name-to-mime-type path)
-                              (base64-encode-string
-                               (with-temp-buffer
-                                 (insert-file-contents path)
-                                  (buffer-string)))))))))
+  (org-link-set-parameters
+   "img"
+   :follow (lambda (path arg) (org-link-open-as-file path arg))
+   :export (lambda (path desc backend cchannel)
+             (cond ((eq backend 'html)
+                    (format "<img style=\"max-width:80%%;margin:2em\" src=\"data:%s;base64,%s\">"
+                            (mailcap-file-name-to-mime-type path)
+                            (base64-encode-string
+                             (with-temp-buffer
+                               (insert-file-contents path)
+                               (buffer-string)))))))))
 
 ;; org-babel
 (org-babel-do-load-languages
@@ -479,7 +471,19 @@
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-
-(provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; code folding
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(require 'hideshow)
+(define-key hs-minor-mode-map (kbd "C-r") #'hs-toggle-hiding)
+
+
+;; set initial frame(window) size
+(set-frame-size (selected-frame) 1040 980 t)
+
+;; set initial frame(window) position
+;(set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0) ;; doesn't work on wayland
+
+(provide 'init)
