@@ -426,6 +426,9 @@
  '((python . t)
    (C . t)))
 
+;; org sort keybind
+(define-key org-mode-map (kbd "C-c c") #'org-sort-entries)
+
 ;; mixed pitch fonts in org mode
 (setup (:package mixed-pitch)
   (:hook-into text-mode))
