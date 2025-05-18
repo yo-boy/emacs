@@ -116,8 +116,8 @@
 (add-hook 'prog-mode-hook  #'display-line-numbers-mode)
 
 ;; previous and next buffer on f-keys
-(define-key global-map [f1] #'previous-buffer)
-(define-key global-map [f2] #'next-buffer)
+(define-key global-map [f1] #'tab-line-switch-to-prev-tab)
+(define-key global-map [f2] #'tab-line-switch-to-next-tab)
 
 ;; buttons to start and end of buffer
 (define-key global-map (kbd "C-<next>") 'end-of-buffer)
