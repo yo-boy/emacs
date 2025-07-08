@@ -342,6 +342,9 @@
 	   rustic-ansi-faces ["black" "red3" "green3" "yellow3" "purple2" "magenta3" "cyan3" "white"])
   (:bind-into rustic-mode-map "C-c C-c u" #'rustic-cargo-update))
 
+;; markdown mode config
+(add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+
 ;; web mode
 (setup (:package web-mode)
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
