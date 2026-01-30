@@ -168,12 +168,19 @@
 (defvar ef-themes-to-toggle)
 (setup (:package  ef-themes)
   :option (setq  ef-themes-to-toggle '(ef-arbutus ef-melissa-dark))
-  (load-theme 'ef-melissa-dark t)
-  (:global "C-c t" ef-themes-toggle))
+  ;;(load-theme 'ef-melissa-dark t)
+  (ef-themes-load-random)
+  (:global "C-c t" ef-themes-rotate))
+(repeat-mode 1)
+(defvar theme-switch-repeat-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map "t" #'ef-themes-rotate)
+    map))
+(put 'ef-themes-rotate 'repeat-map 'theme-switch-repeat-map)
 
-;; ace-window for managing windows
-(setup (:package ace-window)
-  :option (:global "C-x o" 'ace-window))
+  ;; ace-window for managing windows
+  (setup (:package ace-window)
+    :option (:global "C-x o" 'ace-window))
 
 ;; expand region
 (setup (:package expand-region)
