@@ -252,8 +252,12 @@
   (add-hook 'python-mode-hook 'eglot-ensure)
   (add-hook 'c-mode 'eglot-ensure)
   (add-hook 'rustic-mode 'eglot-ensure)
-  (add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
+  ;(add-hook 'eglot-managed-mode-hook #'eglot-inlay-hints-mode)
   (:bind-into eglot-mode-map "C-c g" #'eglot-code-actions))
+
+(require 'cc-mode)
+(define-key java-mode-map (kbd "TAB") #'indent-for-tab-command)
+(define-key c++-mode-map (kbd "TAB") #'indent-for-tab-command)
 
 ;; (setup (:package tree-sitter-langs)
 ;;   (global-tree-sitter-mode 1)
